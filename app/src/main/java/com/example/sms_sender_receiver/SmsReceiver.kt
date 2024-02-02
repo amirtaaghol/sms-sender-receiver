@@ -56,14 +56,13 @@ class SmsReceiver : BroadcastReceiver() {
 
 
         val builder = NotificationCompat.Builder(context, CHANNEL_ID)
-            .setSmallIcon(android.R.drawable.ic_dialog_info) // or ic_dialog_alert, or ic_dialog_info
+            .setSmallIcon(android.R.drawable.ic_dialog_info)
             .setContentTitle("New SMS from $sender")
             .setContentText(message)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .setContentIntent(pendingIntent)
             .setAutoCancel(false)
 
-        // Create the NotificationChannel on API 26+
         val name = "SMS Channel"
         val descriptionText = "Channel for SMS notifications"
         val importance = NotificationManager.IMPORTANCE_DEFAULT
@@ -74,7 +73,6 @@ class SmsReceiver : BroadcastReceiver() {
             context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         notificationManager.createNotificationChannel(channel)
 
-        // Show the notification
         with(NotificationManagerCompat.from(context)) {
             if (ActivityCompat.checkSelfPermission(
                     context,

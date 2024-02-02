@@ -3,9 +3,6 @@ package com.example.sms_sender_receiver
 import android.Manifest
 import android.app.Activity
 import android.app.AlertDialog
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -55,9 +52,6 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.core.app.ActivityCompat
-import androidx.core.app.NotificationCompat.*
-import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import androidx.core.text.isDigitsOnly
 import androidx.lifecycle.ViewModelProvider
@@ -171,7 +165,6 @@ fun SMSApp(mainViewModel: MainViewModel) {
             var messageState by remember { mutableStateOf("") }
             val maxPhoneNumberLength = 11
             val maxMessageLength = 240
-            val lightBlue = Color(0xffd8e6ff)
             val blue = Color(0xff76a9ff)
 
             val context = LocalContext.current
@@ -185,7 +178,6 @@ fun SMSApp(mainViewModel: MainViewModel) {
                     Log.d("SMS_Permissions", "granted")
 
                 }
-
 
             }
             val permissions = arrayOf(
